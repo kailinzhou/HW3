@@ -1,8 +1,21 @@
-body{background:yellow;}
+b
 label{font-weight:bold;}
 .tbox{font-style:italic}
 input[type="text"], input[type='email']{
     
 }
-
+.info{
+	border: solid 2px black;
+	background: white;
+	text-align: center;
+	width:1000px;
+	padding:30px;
+	margin-top:200px;
+	display:inline-block;
+        font-size: large;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
     

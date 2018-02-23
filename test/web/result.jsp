@@ -10,36 +10,81 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Salary Info</title>
+        <link rel='stylesheet' type='text/css' href='./css/stylesheet.css'>
     </head>  
     <%
         double uW=Double.parseDouble(request.getParameter("hoursW"));
         double uP=Double.parseDouble(request.getParameter("hoursP"));
         double preD=Double.parseDouble(request.getParameter("preDeduct"));
-        double postD=Double.parseDouble(request.getParameter("postDeduct"));   
+        double postD=Double.parseDouble(request.getParameter("postDeduct"));
+        double grossPay=0;
+        double taxAmount=0;
+        double otHours=0;
+        double otPayRate=0;
+        double postTaxPay=0;
+        double netPay=0;
+        double regularHours=40;
+        double regularPay=0;
+        double otPay=0;
+        if(uW>40){
+            otHours=uW-regularHours;
+            otPayRate=uP*1.5;
+            otPay=otHours*otPayRate;
+            regularPay=regularHours*uP;
+            grossPay=regularPay+otPay;}
+        else{
+           grossPay=uW*uP;
+        }
+        double taxablePay=grossPay-preD;
+        if(grossPay<500){
+            taxAmount=taxablePay*0.18;
+        }
+        else{
+            taxAmount=taxablePay*0.22;
+        }
+            postTaxPay=taxablePay-taxAmount;
+      
+        netPay=postTaxPay-postD;
+        
     %>
-    <body>
-        <h1>Salary Info</h1>
-        <hr>  
-         <label>Total Hours Worked:</label><input clss='num' type='double' name='hWork' value='' size='50'>
-         <br>
-         <label>Hourly Rate:</label><input clss='num' type='double' name='hRate' value='' size='50'>
-         <br>
-         <label># Hours Overtime</label><input clss='num' type='double' name='overHours' value='' size='50'>
-         <br>
-         <label>Overtime Hourly Rate</label><input clss='num' type='double'name='overRate' value='' size='50'>
-         <br>
-         <label>Gross Pay:</label><input clss='num' type='double'name='gPay' value='' size='50'>
-         <br>
-         <label>Pre-tax Deduct:</label><input clss='num' type='double'name='preDeduct' value='' size='50'>
-         <br>
-         <label>Pre-tax Pay:</label><input clss='num' type='double'name='prePay' value='' size='50'>
-         <br>
-         <label>Tax Amount:</label><input clss='num' type='double'name='taxAm' value='' size='50'>
-         <br>
-         <label>Post-tax Pay:</label><input clss='num' type='double'name='postPay' value='' size='50'>
-         <br>
-         <label>Post-tax Deduct:</label><input clss='num' type='double'name='postDeduct' value='' size='50'>
-         <br>
-         <label>Net Pay:</label><input clss='num' type='double'name='netPay' value='' size='50'>
-         
+    <body background="calculation.jfif">
+        <div style="text-align:center">
+            <div class="info">
+                <h1>Salary Info Table</h1>
+                 <table style="width:100%">
+                     <tr>
+                    <th>Total Hours Worked</th>
+                    <td><%=uW%></td>
+                     </tr>
+                     <tr>
+                    <th>Hourly Pay</th>
+                    <td>$<%=uP%></td>
+                     </tr><tr>
+                    <th>#Hours Overtime</th>
+                    <td><%=otHours%></td></tr>
+                     <tr>
+                    <th>Overtime Hourly Rate</th>
+                    <td>$<%=otPayRate%></td></tr>
+                     <tr>
+                    <th>Gross Pay</th>
+                    <td>$<%=grossPay%></td></tr>
+                     <tr>
+                    <th>Pre-tax Deduct</th>
+                    <td>$<%=preD%></td></tr>
+                     <tr>
+                    <th>Tax Amount</th>
+                    <td>$<%=taxAmount%></td></tr>
+                     <tr>
+                    <th>Post-tax Pay</th>
+                    <td>$<%=postTaxPay%></td></tr>
+                   <tr>
+                    <th>Post-tax Deduct</th>
+                    <td>$<%=postD%></td></tr>
+                   <tr>
+                    <th>Net Pay</th>
+                    <td>$<%=netPay%></td></tr>
+                    </table>
+            </div>
+        </div> 
+    </body>
 </html>
