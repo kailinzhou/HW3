@@ -13,6 +13,7 @@
         <h1>Salary Calculator</h1>
         <hr>
         <form name='demoForm' action ='result.jsp' method='post'>
+            <p>**For better result, tax amount is rounded to neared integer**</p>
                 <label>Hours Worked:<br></label><input clss='num' type='double' name='hoursW' value='' size='50'>
                 <br><label>Hourly Pay:<br></label><input clss='num' type='double' name='hoursP' value='' size='50'>
                 <br>

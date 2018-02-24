@@ -1,9 +1,4 @@
-b
-label{font-weight:bold;}
-.tbox{font-style:italic}
-input[type="text"], input[type='email']{
-    
-}
+
 .info{
 	border: solid 2px black;
 	background: white;
@@ -13,9 +8,15 @@ input[type="text"], input[type='email']{
 	margin-top:200px;
 	display:inline-block;
         font-size: large;
+        font-weight:bold;
+        color:#6AAFA5
 }
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
+   
 }
-    
+p{font-size:70%;
+color:grey   }
+h1{color:#A063A0}
+td{color:#1E3B93}

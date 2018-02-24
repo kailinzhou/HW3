@@ -37,10 +37,10 @@
         }
         double taxablePay=grossPay-preD;
         if(grossPay<500){
-            taxAmount=taxablePay*0.18;
+            taxAmount=Math.round(taxablePay*0.18);
         }
         else{
-            taxAmount=taxablePay*0.22;
+            taxAmount=Math.round(taxablePay*0.22);
         }
             postTaxPay=taxablePay-taxAmount;
       
@@ -51,6 +51,7 @@
         <div style="text-align:center">
             <div class="info">
                 <h1>Salary Info Table</h1>
+                <p>**For better result, tax amount is rounded to neared integer**</p>
                  <table style="width:100%">
                      <tr>
                     <th>Total Hours Worked</th>
